@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>SettingsPage.qml</file>
+        <file>ReportsPage.qml</file>
+        <file>ExercisesPage.qml</file>
+        <file>HomePage.qml</file>
+        <file>AboutPage.qml</file>
+        <file>icons/th-list-solid.svg</file>
+        <file>icons/redo.svg</file>
+        <file>icons/stopwatch.svg</file>
+        <file>icons/clock.svg</file>
+        <file>icons/info.svg</file>
+        <file>icons/exit.svg</file>
+        <file>icons/settings.svg</file>
+        <file>icons/report.svg</file>
+        <file>icons/pause.svg</file>
+        <file>icons/stop.svg</file>
+        <file>icons/start.svg</file>
+        <file>icons/exercises.svg</file>
+        <file>icons/hourglass.svg</file>
+        <file>icons/list.svg</file>
+        <file>icons/done.svg</file>
+        <file>icons/save.svg</file>
+        <file>icons/hourglass-end.svg</file>
+        <file>icons/tasks.svg</file>
+        <file>icons/smile.svg</file>
+        <file>icons/meh.svg</file>
+        <file>icons/plus.svg</file>
+        <file>icons/trash.svg</file>
+    </qresource>
+    <qresource prefix="/sounds"/>
+</RCC>
