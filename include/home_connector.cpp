@@ -9,6 +9,15 @@ HomeConnector::HomeConnector(QObject *parent)
     m_session_running = false;
     m_database = new Database(this, "HomeConnector");
     m_database->open();
+
+    m_effect_start.setSource(QUrl::fromLocalFile(":/sounds/start.wav"));
+    m_effect_start.setLoopCount(1);
+    m_effect_start.setVolume(0.50f);
+
+    m_effect_end.setSource(QUrl::fromLocalFile(":/sounds/end.wav"));
+    m_effect_end.setLoopCount(1);
+    m_effect_end.setVolume(0.50f);
+
 }
 
 HomeConnector::~HomeConnector()
@@ -198,6 +207,10 @@ void HomeConnector::finishOngoingExercise()
         return;
     }
 
+
+
+    m_effect_end.play();
+
     ExerciseList remainingExercises = m_session->getRemainingExercises();
     if (remainingExercises.length() == 0) {
         qDebug() << "emitting sessionFinished";
@@ -217,6 +230,8 @@ void HomeConnector::startNextExercise()
     }
 
     m_session->startNextExercise();
+
+    m_effect_start.play();
 
     QString data = getSessionData();
 

@@ -565,7 +565,6 @@ Page {
 
         onExerciseFinished:
             data => {
-                playMusic.play();
                 const dataObj = JSON.parse(data);
                 renderExercises(dataObj);
                 waitingForExerciseBlock.visible = true;
@@ -755,11 +754,6 @@ Page {
         repeat: true
         onTriggered: homeConnector.updateCountdown()
         triggeredOnStart: true
-    }
-
-    SoundEffect {
-        id: playMusic
-        source: ":/sounds/sicko-mode-sound-effect.wav"
     }
 
 }

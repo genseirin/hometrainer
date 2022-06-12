@@ -30,5 +30,8 @@
         <file>icons/plus.svg</file>
         <file>icons/trash.svg</file>
     </qresource>
-    <qresource prefix="/sounds"/>
+    <qresource prefix="/sounds">
+        <file>end.wav</file>
+        <file>start.wav</file>
+    </qresource>
 </RCC>

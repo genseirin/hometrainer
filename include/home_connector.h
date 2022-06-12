@@ -5,6 +5,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QElapsedTimer>
+#include <QSoundEffect>
 #include "include/exercise.h"
 #include "include/setting.h"
 #include "include/database.h"
@@ -40,6 +41,8 @@ private:
     int m_countdownTime;
     bool m_session_running;
     bool m_session_paused;
+    QSoundEffect m_effect_start;
+    QSoundEffect m_effect_end;
 
     QString qJsonObjectToQString(QJsonObject &obj) const;
 
