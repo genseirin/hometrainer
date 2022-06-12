@@ -25,6 +25,13 @@ Page {
         }
 
         Text {
+            id: text3
+            width: parent.width-20
+            text: qsTr("Version: 1.0")
+            font.pixelSize: 16
+        }
+
+        Text {
             id: text2
             width: parent.width-20
             text: qsTr("Author: Christoph Amthor, www.c-amthor.de, © 2022")
