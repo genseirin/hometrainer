@@ -11,7 +11,6 @@ Setting::Setting(QObject *parent): QObject{parent}
 
     if (!rowExists()) {
         m_query.finish();
-        qDebug() << "We need to create the table setting";
         m_query.exec("CREATE TABLE setting ("
                      "id	INTEGER UNIQUE,"
                      "name	varchar(50) NOT NULL,"

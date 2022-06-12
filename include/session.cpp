@@ -77,7 +77,6 @@ void Session::startNextExercise()
 bool Session::finishOngoingExercise()
 {
     if (!m_currentExercise || !m_currentExercise->getId()) {
-        qDebug() << "Cannot find current exercise";
         return false;
     }
     m_doneExercises.push_front(m_currentExercise);

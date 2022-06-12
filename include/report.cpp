@@ -14,7 +14,6 @@ Report::Report(QObject *parent, int id): QObject{parent}
 
     if (!rowExists()) {
         m_query.finish();
-        qDebug() << "We need to create the table report";
         m_query.prepare("CREATE TABLE report ("
                         "id	INTEGER UNIQUE,"
                         "time	INTEGER NOT NULL,"
@@ -108,7 +107,6 @@ bool Report::save()
 
 bool Report::update()
 {
-    qDebug() << "updating table report";
     m_query.prepare("UPDATE report SET time = :time, exercise_id = :exercise_id WHERE id = :id");
     m_query.bindValue(":time", m_time.toSecsSinceEpoch());
     m_query.bindValue(":exercise_id", m_exerciseId);
@@ -121,7 +119,6 @@ bool Report::update()
 
 bool Report::insert()
 {
-    qDebug() << "inserting table report";
     m_query.prepare("INSERT INTO report (time, exercise_id) VALUES (:time, :exercise_id)");
     m_query.bindValue(":time", m_time.toSecsSinceEpoch());
     m_query.bindValue(":exercise_id", m_exerciseId);

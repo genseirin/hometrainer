@@ -16,7 +16,6 @@ Exercise::Exercise(QObject *parent, Database *database, int id): QObject{parent}
 
     if (!rowExists()) {
         m_query.finish();
-        qDebug() << "We need to create the table exercise";
         m_query.prepare("CREATE TABLE exercise ("
                         "id	INTEGER UNIQUE,"
                         "active	integer NOT NULL,"
@@ -204,8 +203,6 @@ bool Exercise::save()
 
 bool Exercise::update()
 {
-    qDebug() << "updating exercise";
-
     m_query.prepare("UPDATE exercise SET "
                     "active = :active, "
                     "position = :position, "
@@ -232,7 +229,6 @@ bool Exercise::update()
 
 bool Exercise::insert()
 {
-    qDebug() << "inserting exercise";
     m_query.prepare("INSERT INTO exercise (active, position, name, description, modified, lastdone, amount, type)"
                     "VALUES (:active, :position, :name, :description, :modified, :lastdone, :amount, :type)");
     m_query.bindValue(":active", (m_active?1:0));
@@ -241,8 +237,8 @@ bool Exercise::insert()
     m_query.bindValue(":description", m_description);
     m_query.bindValue(":modified", m_modified.toSecsSinceEpoch());
     m_query.bindValue(":lastdone", m_lastdone.toSecsSinceEpoch());
-    m_query.bindValue(":type", m_type);
     m_query.bindValue(":amount", m_amount);
+    m_query.bindValue(":type", m_type);
     bool ok = execQuery();
     m_query.finish();
     if (ok) {
