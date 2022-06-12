@@ -48,14 +48,12 @@ void Setting::save(QString name, QString value)
     execQuery();
 
     if (rowExists()) {
-        qDebug() << "update" << name << value;
         m_query.prepare("UPDATE setting SET value = :value WHERE name = :name");
         m_query.bindValue(":name", name);
         m_query.bindValue(":value", value);
         execQuery();
         m_query.last();
     } else {
-        qDebug() << "insert";
         m_query.prepare("INSERT INTO setting (name, value) VALUES (:name, :value)");
         m_query.bindValue(":name", name);
         m_query.bindValue(":value", value);

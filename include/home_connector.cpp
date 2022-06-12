@@ -3,7 +3,6 @@
 HomeConnector::HomeConnector(QObject *parent)
     : QObject{parent}
 {
-    qDebug() << "constructor" << Q_FUNC_INFO << this;
     m_session = new Session();
     m_session = nullptr;
     m_session_running = false;
@@ -173,7 +172,6 @@ void HomeConnector::startSession()
         m_session_running = true;
         m_session_paused = false;
 
-        qDebug() << "emitting sessionStarted";
         emit sessionStarted(data, setTimerDuration);
     }
 
@@ -188,7 +186,6 @@ void HomeConnector::finishSession()
 
     m_session_running = false;
 
-    qDebug() << "emitting sessionFinished";
     emit sessionFinished(false);
 }
 
@@ -202,7 +199,6 @@ void HomeConnector::finishOngoingExercise()
     Exercise * exercise = const_cast<Exercise *>(m_session->getCurrentExercise());
     exercise->createReport();
 
-    qDebug() << "finishOngoingExercise";
     if (!m_session->finishOngoingExercise()) {
         return;
     }
@@ -213,11 +209,9 @@ void HomeConnector::finishOngoingExercise()
 
     ExerciseList remainingExercises = m_session->getRemainingExercises();
     if (remainingExercises.length() == 0) {
-        qDebug() << "emitting sessionFinished";
         emit sessionFinished(m_session_running);
     } else {
         QString data = getSessionData();
-        qDebug() << "emitting exerciseFinished";
         emit exerciseFinished(data);
     }
 }
@@ -235,7 +229,6 @@ void HomeConnector::startNextExercise()
 
     QString data = getSessionData();
 
-    qDebug() << "emitting exerciseStarted";
     emit exerciseStarted(data);
 
     Exercise * currentExercise = const_cast<Exercise*>(m_session->getCurrentExercise());

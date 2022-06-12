@@ -71,8 +71,6 @@ void Session::startNextExercise()
     if (m_remainingExercises.length() > 0) {
 
         m_currentExercise = m_remainingExercises.takeFirst();
-
-        qDebug() << "new exercise started " << m_currentExercise;
     }
 }
 

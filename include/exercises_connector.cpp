@@ -50,7 +50,6 @@ void ExercisesConnector::getExercises()
 
 void ExercisesConnector::updateExercises(QString data)
 {
-    qDebug() << data;
     QJsonDocument decoded = QJsonDocument::fromJson(data.toUtf8());
 
     if (!decoded.isNull()) {

@@ -147,11 +147,8 @@ void Exercise::setLastdone(const QDateTime &newLastdone)
 void Exercise::createReport()
 {
     Report report = Report();
-    qDebug()<<"1" << m_id;
     report.setExerciseId(m_id);
-    qDebug()<<"2";
     report.save();
-    qDebug()<<"3";
 }
 
 bool Exercise::create()
