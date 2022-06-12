@@ -37,8 +37,8 @@ void ExercisesConnector::getExercises()
                 {"position", position},
                 {"name", query.value(3).toString()},
                 {"description", query.value(4).toString()},
-                {"type", query.value(7).toString()},
-                {"amount", query.value(8).toInt()},
+                {"amount", query.value(7).toInt()},
+                {"type", query.value(8).toString()},
             };
             jsonAll.insert(QString::number(position++), jsonOne);
         }
@@ -62,8 +62,8 @@ void ExercisesConnector::updateExercises(QString data)
             exercise.setName(item.toObject().value("name").toString());
             exercise.setDescription(item.toObject().value("description").toString());
             exercise.setModified(QDateTime::currentDateTime());
-            exercise.setType(item.toObject().value("type").toString());
             exercise.setAmount(item.toObject().value("amount").toInt());
+            exercise.setType(item.toObject().value("type").toString());
             exercise.save();
 
             getExercises();
@@ -89,8 +89,8 @@ void ExercisesConnector::createExercise()
     exercise.setDescription("");
     exercise.setLastdone(QDateTime::fromSecsSinceEpoch(0));
     exercise.setModified(QDateTime::currentDateTime());
-    exercise.setType(0);
     exercise.setAmount(10);
+    exercise.setType(0);
     exercise.save();
 
     getExercises();

@@ -25,7 +25,7 @@ Exercise::Exercise(QObject *parent, Database *database, int id): QObject{parent}
                    "description	text,"
                    "modified	integer NOT NULL,"
                    "lastdone	integer,"
-                   "amount	integer,"
+                        "amount	integer,"
                    "type	varchar(255),"
                    "PRIMARY KEY(id AUTOINCREMENT)"
                    ")");
@@ -176,8 +176,8 @@ bool Exercise::load()
         m_description = m_query.value(4).toString();
         m_modified = QDateTime::fromSecsSinceEpoch(m_query.value(5).toInt());
         m_lastdone = QDateTime::fromSecsSinceEpoch(m_query.value(6).toInt());
-        m_type = m_query.value(7).toString();
-        m_amount = m_query.value(8).toInt();
+        m_amount = m_query.value(7).toInt();
+        m_type = m_query.value(8).toString();
         m_query.finish();
         return true;
     }
@@ -213,8 +213,8 @@ bool Exercise::update()
                   "description = :description, "
                   "modified = :modified, "
                   "lastdone = :lastdone, "
-                    "type = :type, "
-                  "amount = :amount "
+                  "amount = :amount, "
+                    "type = :type "
                   "WHERE id = :id");
     m_query.bindValue(":active", (m_active?1:0));
     m_query.bindValue(":position", m_position);
@@ -222,8 +222,8 @@ bool Exercise::update()
     m_query.bindValue(":description", m_description);
     m_query.bindValue(":modified", m_modified.toSecsSinceEpoch());
     m_query.bindValue(":lastdone", m_lastdone.toSecsSinceEpoch());
-    m_query.bindValue(":type", m_type);
     m_query.bindValue(":amount", m_amount);
+    m_query.bindValue(":type", m_type);
     m_query.bindValue(":id", m_id);
     bool ok = execQuery();
     m_query.finish();
@@ -241,8 +241,8 @@ bool Exercise::insert()
     m_query.bindValue(":description", m_description);
     m_query.bindValue(":modified", m_modified.toSecsSinceEpoch());
     m_query.bindValue(":lastdone", m_lastdone.toSecsSinceEpoch());
-    m_query.bindValue(":amount", m_amount);
     m_query.bindValue(":type", m_type);
+    m_query.bindValue(":amount", m_amount);
     bool ok = execQuery();
     m_query.finish();
     if (ok) {
