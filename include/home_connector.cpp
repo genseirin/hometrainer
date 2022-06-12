@@ -203,9 +203,9 @@ void HomeConnector::finishOngoingExercise()
         return;
     }
 
-
-
-    m_effect_end.play();
+    if (exercise->getType() == "sustain") {
+        m_effect_end.play();
+    }
 
     ExerciseList remainingExercises = m_session->getRemainingExercises();
     if (remainingExercises.length() == 0) {
