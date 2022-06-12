@@ -128,7 +128,7 @@ Page {
                             model: ListModel {
                                 id: typeComboBoxModel
                                 ListElement { key: "repeat"; text: qsTr("times") }
-                                ListElement { key: "sustain"; text: qsTr("minutes") }
+                                ListElement { key: "sustain"; text: qsTr("seconds") }
                             }
                             onCurrentTextChanged: {
                                 if (listViewDone) {
