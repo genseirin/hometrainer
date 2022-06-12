@@ -37,129 +37,129 @@ Page {
 
         }
 
-            ListView {
-                id: reportList
-                spacing: 5
-                width: parent.width - 40
-                height: exercisesPage.height - 60
-                anchors.left: parent.left
-                anchors.leftMargin: 20
+        ListView {
+            id: reportList
+            spacing: 5
+            width: parent.width - 40
+            height: exercisesPage.height - 60
+            anchors.left: parent.left
+            anchors.leftMargin: 20
 
-                model: ListModel {
-                    id: reportModel
-                }
+            model: ListModel {
+                id: reportModel
+            }
 
-                delegate: Rectangle {
-                    id: reportDelegate
+            delegate: Rectangle {
+                id: reportDelegate
+                height: 50
+                radius: 5
+                color: "#eee"
+                width: reportList.width
+
+                Row {
+                    spacing: 5
+                    anchors.fill: parent
+                    anchors.leftMargin: 5
+                    anchors.bottomMargin: 5
+                    anchors.topMargin: 5
+                    anchors.rightMargin: 5
                     height: 50
-                    radius: 5
-                    color: "#eee"
-                    width: reportList.width
 
-                    Row {
-                        spacing: 5
-                        anchors.fill: parent
-                        anchors.leftMargin: 5
-                        anchors.bottomMargin: 5
-                        anchors.topMargin: 5
-                        anchors.rightMargin: 5
+                    property int id: 0
+
+                    SpinBox {
+                        id: positionField
+                        font.pointSize: 14
                         height: 50
-
-                        property int id: 0
-
-                        SpinBox {
-                            id: positionField
-                            font.pointSize: 14
-                            height: 50
-                            width: parent.width * 0.1
-                            value: position
-                            from: 1
-                            to: maxPosition
-                            onValueModified: exercises_connector.updateExercise(id, "position", positionField.value)
-                        }
-                        Switch {
-                            id: activeSwitch
-                            text: ""
-                            height: 50
-                            width: parent.width * 0.05
-                            checked: active
-                            onToggled: exercises_connector.updateExercise(id, "active", activeSwitch.checked?1:0)
-                        }
-                        TextField {
-                            id: nameField
-                            text: name
-                            verticalAlignment: Text.AlignVCenter
-                            font.pointSize: 16
-                            font.bold: true
-                            height: 50
-                            width: parent.width * 0.20
-                            placeholderText: qsTr("Name")
-                            onEditingFinished: exercises_connector.updateExercise(id, "name", nameField.text)
-                            onTextEdited: descriptionField.color="darkslateblue"
-                        }
-                        TextField {
-                            id: descriptionField
-                            text: description
-                            verticalAlignment: Text.AlignVCenter
-                            font.pointSize: 14
-                            height: 50
-                            width: parent.width * 0.25
-                            placeholderText: qsTr("Description")
-                            onEditingFinished: exercises_connector.updateExercise(id, "description", descriptionField.text)
-                            onTextEdited: descriptionField.color="darkslateblue"
-                        }
-                        SpinBox {
-                            id: amountField
-                            height: 50
-                            width: parent.width * 0.15
-                            font.pointSize: 14
-                            value: amount
-                            editable: true
-                            from: 1
-                            to: 500
-                            onValueModified: exercises_connector.updateExercise(id, "amount", amountField.value)
-                        }
-                        ComboBox {
-                            id: typeComboBox
-                            height: 50
-                            width: parent.width * 0.15
-                            font.pointSize: 14
-                            textRole: "text"
-                            model: ListModel {
-                                id: typeComboBoxModel
-                                ListElement { key: "repeat"; text: qsTr("times") }
-                                ListElement { key: "sustain"; text: qsTr("seconds") }
-                            }
-                            onCurrentTextChanged: {
-                                if (listViewDone) {
-                                    exercises_connector.updateExercise(id, "type", typeComboBox.currentIndex)
-                                }
-                            }
-                            Component.onCompleted: {
-                                if (type === "repeat") {
-                                    currentIndex = 0;
-                                } else {
-                                    currentIndex = 1;
-                                }
-                            }
-                        }
-                        DelayButton {
-                            delay: 3000
-                            height: 50
-                            width: parent.width * 0.05
-                            opacity: 0.8
-                            contentItem:Image{
-                                source: "qrc:/icons/trash.svg"
-                                height: 15
-                                width: 15
-                                fillMode: Image.PreserveAspectFit
-                            }
-                            onActivated: exercises_connector.deleteExercise(id)
-                        }
-
+                        width: parent.width * 0.1
+                        value: position
+                        from: 1
+                        to: maxPosition
+                        onValueModified: exercises_connector.updateExercise(id, "position", positionField.value)
                     }
+                    Switch {
+                        id: activeSwitch
+                        text: ""
+                        height: 50
+                        width: parent.width * 0.05
+                        checked: active
+                        onToggled: exercises_connector.updateExercise(id, "active", activeSwitch.checked?1:0)
+                    }
+                    TextField {
+                        id: nameField
+                        text: name
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 16
+                        font.bold: true
+                        height: 50
+                        width: parent.width * 0.20
+                        placeholderText: qsTr("Name")
+                        onEditingFinished: exercises_connector.updateExercise(id, "name", nameField.text)
+                        onTextEdited: descriptionField.color="darkslateblue"
+                    }
+                    TextField {
+                        id: descriptionField
+                        text: description
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 14
+                        height: 50
+                        width: parent.width * 0.25
+                        placeholderText: qsTr("Description")
+                        onEditingFinished: exercises_connector.updateExercise(id, "description", descriptionField.text)
+                        onTextEdited: descriptionField.color="darkslateblue"
+                    }
+                    SpinBox {
+                        id: amountField
+                        height: 50
+                        width: parent.width * 0.15
+                        font.pointSize: 14
+                        value: amount
+                        editable: true
+                        from: 1
+                        to: 500
+                        onValueModified: exercises_connector.updateExercise(id, "amount", amountField.value)
+                    }
+                    ComboBox {
+                        id: typeComboBox
+                        height: 50
+                        width: parent.width * 0.15
+                        font.pointSize: 14
+                        textRole: "text"
+                        model: ListModel {
+                            id: typeComboBoxModel
+                            ListElement { key: "repeat"; text: qsTr("times") }
+                            ListElement { key: "sustain"; text: qsTr("seconds") }
+                        }
+                        onCurrentTextChanged: {
+                            if (listViewDone) {
+                                exercises_connector.updateExercise(id, "type", typeComboBox.currentIndex)
+                            }
+                        }
+                        Component.onCompleted: {
+                            if (type === "repeat") {
+                                currentIndex = 0;
+                            } else {
+                                currentIndex = 1;
+                            }
+                        }
+                    }
+                    DelayButton {
+                        delay: 3000
+                        height: 50
+                        width: parent.width * 0.05
+                        opacity: 0.8
+                        contentItem:Image{
+                            source: "qrc:/icons/trash.svg"
+                            height: 15
+                            width: 15
+                            fillMode: Image.PreserveAspectFit
+                        }
+                        onActivated: exercises_connector.deleteExercise(id)
+                    }
+
                 }
             }
+        }
     }
 
 

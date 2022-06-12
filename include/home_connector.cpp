@@ -81,8 +81,8 @@ QString HomeConnector::getSessionData() const
         };
         jsonAll.insert("now", jsonNow);
     } else {
-         QJsonObject jsonNow {};
-         jsonAll.insert("now", jsonNow);
+        QJsonObject jsonNow {};
+        jsonAll.insert("now", jsonNow);
     }
 
     QJsonObject jsonRemaining;

@@ -16,12 +16,12 @@ Report::Report(QObject *parent, int id): QObject{parent}
         m_query.finish();
         qDebug() << "We need to create the table report";
         m_query.prepare("CREATE TABLE report ("
-                   "id	INTEGER UNIQUE,"
-                   "time	INTEGER NOT NULL,"
-                   "exercise_id	INTEGER NOT NULL,"
-                   "PRIMARY KEY(id AUTOINCREMENT),"
-                   "FOREIGN KEY('exercise_id') REFERENCES exercise('id')"
-                   ")");
+                        "id	INTEGER UNIQUE,"
+                        "time	INTEGER NOT NULL,"
+                        "exercise_id	INTEGER NOT NULL,"
+                        "PRIMARY KEY(id AUTOINCREMENT),"
+                        "FOREIGN KEY('exercise_id') REFERENCES exercise('id')"
+                        ")");
         execQuery();
     } else {
         m_query.finish();

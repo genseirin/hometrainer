@@ -12,7 +12,6 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QSqlRecord>
-//#include <QLatin1String>
 
 class Database : public QObject
 {

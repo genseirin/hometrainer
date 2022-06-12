@@ -4,7 +4,7 @@ Setting::Setting(QObject *parent): QObject{parent}
 {
     m_database = new Database(this, "Setting");
     m_database->open();
-     m_query = QSqlQuery(m_database->getQSqlDatabase());
+    m_query = QSqlQuery(m_database->getQSqlDatabase());
 
     m_query.exec("SELECT EXISTS( SELECT name FROM sqlite_master WHERE type='table' AND name='setting')");
 
@@ -13,12 +13,12 @@ Setting::Setting(QObject *parent): QObject{parent}
         m_query.finish();
         qDebug() << "We need to create the table setting";
         m_query.exec("CREATE TABLE setting ("
-                      "id	INTEGER UNIQUE,"
-                      "name	varchar(50) NOT NULL,"
-                      "value	varchar(255) NOT NULL,"
-                      "time	integer,"
-                      "PRIMARY KEY(id AUTOINCREMENT)"
-                      ")");
+                     "id	INTEGER UNIQUE,"
+                     "name	varchar(50) NOT NULL,"
+                     "value	varchar(255) NOT NULL,"
+                     "time	integer,"
+                     "PRIMARY KEY(id AUTOINCREMENT)"
+                     ")");
         execQuery();
     } else {
         m_query.finish();

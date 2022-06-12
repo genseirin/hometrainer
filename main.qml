@@ -47,7 +47,7 @@ ApplicationWindow {
         id: drawer
         width: window.width * 0.33
         height: window.height
-//        onAboutToShow: {}
+        //        onAboutToShow: {}
 
         Column {
             anchors.fill: parent

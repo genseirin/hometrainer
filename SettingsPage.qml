@@ -92,9 +92,9 @@ Page {
                 display: AbstractButton.TextBesideIcon
                 onClicked: {
                     const data = [
-                        {name:"countdown", value:countdownSpinBox.value},
-                        {name:"new_session_gap", value:newSessionGapSpinBox.value}
-                     ];
+                                   {name:"countdown", value:countdownSpinBox.value},
+                                   {name:"new_session_gap", value:newSessionGapSpinBox.value}
+                               ];
 
                     settings_connector.saveData(JSON.stringify(data));
                 }
@@ -118,7 +118,7 @@ Page {
                         case "countdown":
                         countdownSpinBox.value = parseInt(dataObj[key].value);
                         break;
-                     case "new_session_gap":
+                        case "new_session_gap":
                         newSessionGapSpinBox.value = parseInt(dataObj[key].value);
                         break;
                     }

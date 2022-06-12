@@ -18,17 +18,17 @@ Exercise::Exercise(QObject *parent, Database *database, int id): QObject{parent}
         m_query.finish();
         qDebug() << "We need to create the table exercise";
         m_query.prepare("CREATE TABLE exercise ("
-                   "id	INTEGER UNIQUE,"
-                   "active	integer NOT NULL,"
-                   "position	integer NOT NULL,"
-                   "name	varchar(255) NOT NULL,"
-                   "description	text,"
-                   "modified	integer NOT NULL,"
-                   "lastdone	integer,"
+                        "id	INTEGER UNIQUE,"
+                        "active	integer NOT NULL,"
+                        "position	integer NOT NULL,"
+                        "name	varchar(255) NOT NULL,"
+                        "description	text,"
+                        "modified	integer NOT NULL,"
+                        "lastdone	integer,"
                         "amount	integer,"
-                   "type	varchar(255),"
-                   "PRIMARY KEY(id AUTOINCREMENT)"
-                   ")");
+                        "type	varchar(255),"
+                        "PRIMARY KEY(id AUTOINCREMENT)"
+                        ")");
         execQuery();
     } else {
         m_query.finish();
@@ -207,15 +207,15 @@ bool Exercise::update()
     qDebug() << "updating exercise";
 
     m_query.prepare("UPDATE exercise SET "
-                  "active = :active, "
-                  "position = :position, "
-                  "name = :name, "
-                  "description = :description, "
-                  "modified = :modified, "
-                  "lastdone = :lastdone, "
-                  "amount = :amount, "
+                    "active = :active, "
+                    "position = :position, "
+                    "name = :name, "
+                    "description = :description, "
+                    "modified = :modified, "
+                    "lastdone = :lastdone, "
+                    "amount = :amount, "
                     "type = :type "
-                  "WHERE id = :id");
+                    "WHERE id = :id");
     m_query.bindValue(":active", (m_active?1:0));
     m_query.bindValue(":position", m_position);
     m_query.bindValue(":name", m_name);
@@ -234,7 +234,7 @@ bool Exercise::insert()
 {
     qDebug() << "inserting exercise";
     m_query.prepare("INSERT INTO exercise (active, position, name, description, modified, lastdone, amount, type)"
-                  "VALUES (:active, :position, :name, :description, :modified, :lastdone, :amount, :type)");
+                    "VALUES (:active, :position, :name, :description, :modified, :lastdone, :amount, :type)");
     m_query.bindValue(":active", (m_active?1:0));
     m_query.bindValue(":position", m_position);
     m_query.bindValue(":name", m_name);
