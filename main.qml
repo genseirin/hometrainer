@@ -109,7 +109,6 @@ ApplicationWindow {
         anchors.fill: parent
     }
 
-
 }
 
 

@@ -17,9 +17,16 @@ This is a simple application that lets you create a plan of exercises that are d
  - https://pixabay.com/users/sergequadrado-24990007
  - https://pixabay.com/users/muzaproduction-24990238/
 
+### Icons
+ - https://fontawesome.com
+
 ## Future Development
 - Delete old reports
 - Save external backup of the database
+
+## Author
+
+Christoph Amthor
 
 ## License
 
