@@ -56,6 +56,10 @@ void ExercisesConnector::updateExercises(QString data)
         QJsonArray array = decoded.array();
         for (const QJsonValue &item : array) {
             int id = item.toObject().value("id").toInt();
+            QString type = item.toObject().value("type").toString();
+            if (type != "repeat" && type != "sustain") {
+                type = "sustain";
+            }
             Exercise exercise = Exercise(this, nullptr, id);
             exercise.setPosition(item.toObject().value("position").toInt());
             exercise.setActive(item.toObject().value("active")==1);
@@ -63,7 +67,7 @@ void ExercisesConnector::updateExercises(QString data)
             exercise.setDescription(item.toObject().value("description").toString());
             exercise.setModified(QDateTime::currentDateTime());
             exercise.setAmount(item.toObject().value("amount").toInt());
-            exercise.setType(item.toObject().value("type").toString());
+            exercise.setType(type);
             exercise.save();
 
             getExercises();
