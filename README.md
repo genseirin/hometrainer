@@ -16,6 +16,7 @@ This is a simple application that lets you create a plan of exercises that are d
 ### Sounds
  - https://pixabay.com/users/sergequadrado-24990007
  - https://pixabay.com/users/muzaproduction-24990238/
+ - https://pixabay.com/sound-effects/ding-idea-40142/
 
 ### Icons
  - https://fontawesome.com
