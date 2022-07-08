@@ -3,7 +3,7 @@
 This is a simple application that lets you create a plan of exercises that are defined by a name, a description and either a number of repetitions or a number of seconds.
 
 ## Latest Version
-1.0
+1.1
 
 ## Features
 

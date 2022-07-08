@@ -27,7 +27,7 @@ Page {
         Text {
             id: text2
             width: parent.width-20
-            text: qsTr("Version: 1.0")
+            text: qsTr("Version: 1.1")
             font.pixelSize: 16
         }
 
