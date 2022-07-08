@@ -10,21 +10,14 @@ Report::Report(QObject *parent, int id): QObject{parent}
     m_database->open();
     m_query = QSqlQuery(m_database->getQSqlDatabase());
 
-    m_query.exec("SELECT EXISTS( SELECT name FROM sqlite_master WHERE type='table' AND name='report')");
-
-    if (!rowExists()) {
-        m_query.finish();
-        m_query.prepare("CREATE TABLE report ("
-                        "id	INTEGER UNIQUE,"
-                        "time	INTEGER NOT NULL,"
-                        "exercise_id	INTEGER NOT NULL,"
-                        "PRIMARY KEY(id AUTOINCREMENT),"
-                        "FOREIGN KEY('exercise_id') REFERENCES exercise('id')"
-                        ")");
-        execQuery();
-    } else {
-        m_query.finish();
-    }
+    m_query.exec("CREATE TABLE IF NOT EXISTS report ("
+                 "id	INTEGER UNIQUE,"
+                 "time	INTEGER NOT NULL,"
+                 "exercise_id	INTEGER NOT NULL,"
+                 "PRIMARY KEY(id AUTOINCREMENT),"
+                 "FOREIGN KEY('exercise_id') REFERENCES exercise('id')"
+                 ")");
+    m_query.finish();
 
     if (0 == id) {
         m_time = QDateTime::currentDateTime();

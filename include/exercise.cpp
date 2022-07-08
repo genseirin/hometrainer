@@ -12,26 +12,19 @@ Exercise::Exercise(QObject *parent, Database *database, int id): QObject{parent}
     m_database->open();
     m_query = QSqlQuery(m_database->getQSqlDatabase());
 
-    m_query.exec("SELECT EXISTS( SELECT name FROM sqlite_master WHERE type='table' AND name='exercise')");
-
-    if (!rowExists()) {
-        m_query.finish();
-        m_query.prepare("CREATE TABLE exercise ("
-                        "id	INTEGER UNIQUE,"
-                        "active	integer NOT NULL,"
-                        "position	integer NOT NULL,"
-                        "name	varchar(255) NOT NULL,"
-                        "description	text,"
-                        "modified	integer NOT NULL,"
-                        "lastdone	integer,"
-                        "amount	integer,"
-                        "type	varchar(255),"
-                        "PRIMARY KEY(id AUTOINCREMENT)"
-                        ")");
-        execQuery();
-    } else {
-        m_query.finish();
-    }
+    m_query.exec("CREATE TABLE IF NOT EXISTS exercise ("
+                 "id	INTEGER UNIQUE,"
+                 "active	integer NOT NULL,"
+                 "position	integer NOT NULL,"
+                 "name	varchar(255) NOT NULL,"
+                 "description	text,"
+                 "modified	integer NOT NULL,"
+                 "lastdone	integer,"
+                 "amount	integer,"
+                 "type	varchar(255),"
+                 "PRIMARY KEY(id AUTOINCREMENT)"
+                 ")");
+    m_query.finish();
 
     if (-1 == m_id) {
         return;
